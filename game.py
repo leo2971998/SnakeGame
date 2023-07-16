@@ -36,14 +36,14 @@ apple_img = pygame.image.load('apple.png')
 apple_img = pygame.transform.scale(apple_img, (20, 20))
 
 # defining snake default position
-snake_position = [100, 50]
+snake_position = [100, 60]
 
 # defining first 4 blocks of snake body
-snake_body = [[100, 50], [90, 50], [80, 50], [70, 50]]
+snake_body = [[100, 60], [90, 60], [80, 60], [70, 60]]
 
 # fruit position
-fruit_position = [random.randrange(1, (window_x//20)) * 20,
-                  random.randrange(1, (window_y//20)) * 20]
+fruit_position = [random.randrange(1, ((window_x-20)//20)) * 20,
+                  random.randrange(1, ((window_y-20)//20)) * 20]
 
 fruit_spawn = True
 
@@ -129,8 +129,8 @@ while True:
 
     # Spawning fruit
     if not fruit_spawn:
-        fruit_position = [random.randrange(1, (window_x//20)) * 20,
-                          random.randrange(1, (window_y//20)) * 20]
+        fruit_position = [random.randrange(1, ((window_x//20)-1)) * 20,
+                          random.randrange(1, ((window_y//20)-1)) * 20]
     fruit_spawn = True
 
     # GFX
@@ -145,7 +145,7 @@ while True:
     # Game Over conditions
     # getting out of bounds
     if (snake_position[0] < 0 or snake_position[0] > window_x-20 or
-            snake_position[1] < 0 or snake_position[1] > window_y-20):
+            snake_position[1] < 0 or snake_position[1] > window_y):
         game_over('arial', red, 'arial', 20)
     # Touching the snake body
     for block in snake_body[1:]:
